@@ -33,11 +33,14 @@ let concesionaria = {
     return this.autosParaLaVenta().filter(au=>au.km<100)
  },
  listaDeVentas: function(){
-    let pos= autos.map(au=>au.vendido).indexOf(true)
-    return autos[pos].precio
- }
+    return autos.filter(au=>au.vendido==true).map(au=>au.precio)
+ },
+ totalDeVentas: function(){
+    if(this.listaDeVentas().length>0){
+        return this.listaDeVentas().reduce((a,b)=>a+b )}
+        else{ return 0 }}
 }
 
 concesionaria.venderAuto("APL123");
 
-console.log(concesionaria.listaDeVentas())
+console.log(concesionaria.totalDeVentas())
