@@ -28,8 +28,16 @@ let concesionaria = {
 
    autosParaLaVenta: function(){
     return autos.filter(au=>au.vendido==false)
+ },
+ autosNuevos: function(){
+    return this.autosParaLaVenta().filter(au=>au.km<100)
+ },
+ listaDeVentas: function(){
+    let pos= autos.map(au=>au.vendido).indexOf(true)
+    return autos[pos].precio
  }
 }
 
-concesionaria.venderAuto("APL123")
-console.log(concesionaria.autosParaLaVenta())
+concesionaria.venderAuto("APL123");
+
+console.log(concesionaria.listaDeVentas())
